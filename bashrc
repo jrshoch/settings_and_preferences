@@ -108,14 +108,9 @@ fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-# custom aliases
-alias grep="grep --color=auto"
-alias xgi="find . | xargs grep --color=auto -i -s"
-alias xg="find . | xargs grep --color=auto -s"
-alias xfi="find . | grep --color=auto -i -s"
-alias xf="find . | grep --color=auto -s"
-alias athena="ssh -X athena.dialup.mit.edu"
-alias cdos="cd ~/workspace/school_work/fall12/6.828"
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
 
-# start with tmux
-[[ $TERM != "screen" ]] && exec tmux
+# Set editor (for git, possibly others) to vim
+export EDITOR=vim
